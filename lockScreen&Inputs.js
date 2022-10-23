@@ -1,13 +1,5 @@
 import { isValidInput } from "./validation.js";
 import { createUserObject } from "./userObject.js";
-import {
-  l_database,
-  addCollection,
-  addObject,
-  getCollection,
-  getObject,
-  uploadFromLocalStorage
-} from './database.js'
 
 export function loginLock(text, obj_type) {
   const lock_div = document.createElement("div");
@@ -52,8 +44,6 @@ export function loginLock(text, obj_type) {
   lock_div.insertAdjacentElement("beforeend", login_window);
   document.body.append(lock_div);
 }
-
-
 
 function createInputs(
   obj,

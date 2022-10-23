@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="main_style_massager.css" />
-    <link href="https://css.gg/css?=|home" rel="stylesheet"/>
+    <link href="https://css.gg/css?=|home" rel="stylesheet" />
 
-    <script  src="./database.js" type="module"></script>
-    <script  src="./objectModel.js" type="module"></script>
-    <script  src="./footer.js" type="module"></script>
+    <script src="./database.js" type="module"></script>
+    <script src="./objectModel.js" type="module"></script>
+    <script src="./footer.js" type="module"></script>
     <script src="./lockScreen&Inputs.js" type="module"></script>
     <script src="./validation.js" type="module"></script>
-    
+
     <title>Massager</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
@@ -30,31 +30,22 @@
       </main>
     </div>
     <script type="module">
-      import {loginBar} from './footer.js'
-      import { 
+      import { loginBar } from "./footer.js";
+      import {
         l_database,
         addCollection,
         addObject,
         getCollection,
         getObject,
-        uploadFromLocalStorage
-      } from './database.js'
+        uploadFromLocalStorage,
+      } from "./database.js";
 
-
-        uploadFromLocalStorage();
-        console.log(l_database)
-
-
+      uploadFromLocalStorage();
+      console.log(l_database);
 
       if (!localStorage.getItem("login_status")) {
         loginBar();
       }
-
-      
-
-
-
-
     </script>
   </body>
 </html>
