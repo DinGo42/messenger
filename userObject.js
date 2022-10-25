@@ -36,11 +36,12 @@ export const createUserObject = (user_values) => {
       }
     }
   }
-  addCollection("users");
+  addCollection('users');
+  addCollection('posts')
   addObject(user_values,'users')
+  addObject({title:'hello',text:'test of new object model',email:'test123@ukr.net'},'posts')
   find({nickname:'asda',email:'test3@ukr.net'},'users')
-  addCollection("posts");
-  addObject({title:'hello',text:'test1',email:'test3@ukr.net'},'posts')
+
 };
 
 

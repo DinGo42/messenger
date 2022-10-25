@@ -1,4 +1,4 @@
-import { user_model } from "./objectModel.js"
+import { user_model,collection_type ,checks} from "./objectModel.js"
 
 let l_database = {}
 
@@ -16,10 +16,15 @@ const addCollection = (name,value=[]) => {
 }
 
 const addObject = (obj,collection) => {
-    console.log(getCollection(collection))
-    if(![...new Set(getCollection(collection).map((a)=>a.email))].includes(obj.email)){
-      l_database[collection].push(obj)
-    }
+  let is_valid = true
+  for(const field in collection_type[collection]){
+      if(collection_type[collection][field].unique){
+        is_valid = checks.unique(obj,collection,field)
+      }
+  }
+if(is_valid){
+  l_database[collection].push(obj)
+}
   saveToLocalStorage()
 }
 
