@@ -1,3 +1,4 @@
+import { getCollection } from "./database.js";
 const reg_exp_email = /[a-f0-9]*@\w{3,5}\.[a-f]{0,3}/;
 const login_obj = {
   error_style: "invalid",
@@ -81,19 +82,53 @@ const sign_obj = {
 }
 
 const checks = {
-    string:{
-      type:(str) =>typeof str === "string",
-      min_length: (str, num) => str.length > num,
-      max_length: (str, num) => str.length < num,
-      check: (str, regExp) => regExp.test(str),
-      unique:(value)=>value
+  unique: (obj,collection,field) => ![...new Set(getCollection(collection).map((a)=>a[field]))].includes(obj[field]),//true -- вільна каса 
+  required:(obj,collection,field) => obj[field],
+string:{
+  type:(str) =>typeof str === "string",
+  min_length: (str, num) => str.length > num,
+  max_length: (str, num) => str.length < num,
+  check: (str, regExp) => regExp.test(str),
+  unique:(value)=>value
+},
+number: {
+  type:(num) =>typeof num === 'string',
+  check: (num, regExp) => regExp.test(num),
+  unique:(value)=>value
+},
+}
+
+const collection_type = {
+  users:{
+    nickname:{
+      unique:false,
+      required:true
     },
-    number: {
-      type:(num) =>typeof num === 'string',
-      check: (num, regExp) => regExp.test(num),
-      unique:(value)=>value
+    email:{
+      unique:true,
+      required:true
     },
-};
+    password:{
+      unique:false,
+      required:true
+    },
+  },
+
+  posts:{
+    title:{
+      unique:false,
+      required:true
+    },
+    text:{
+      unique:false,
+      required:false
+    },
+    email:{
+      unique:false,
+      required:true
+    },
+  }
+}
 
 const user_model = {
   nickname:{
@@ -116,6 +151,7 @@ const user_model = {
 export {
   login_obj,
   sign_obj,
+  collection_type,
   user_model,
   checks
 }
