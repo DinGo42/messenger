@@ -1,5 +1,6 @@
 import { getCollection } from "./database.js";
 const reg_exp_email = /[a-f0-9]*@\w{3,5}\.[a-f]{0,3}/;
+
 const login_obj = {
   error_style: "invalid",
   input_class: "login-input",
@@ -13,11 +14,10 @@ const login_obj = {
       validation: {
         type: "string",
         min_length: 4,
-        max_length:120,
+        max_length: 120,
         check: reg_exp_email,
       },
-      value:null,
-
+      value: null,
     },
     password: {
       id: "password",
@@ -29,7 +29,7 @@ const login_obj = {
         type: "string",
         check: /[\d\w]{4,120}/,
       },
-      value:null,
+      value: null,
     },
   },
 };
@@ -38,7 +38,7 @@ const sign_obj = {
   error_style: "invalid",
   input_class: "login-input",
   fields: {
-    nickname:{
+    nickname: {
       id: "nickname",
       input_type: "nickname",
       placeholder: "your nick?",
@@ -48,7 +48,7 @@ const sign_obj = {
         type: "string",
         check: /[\d\w]{4,120}/,
       },
-      value:null,
+      value: null,
     },
     email: {
       id: "email",
@@ -59,99 +59,81 @@ const sign_obj = {
       validation: {
         type: "string",
         min_length: 4,
-        max_length:120,
+        max_length: 120,
         check: reg_exp_email,
       },
-      value:null,
-
+      value: null,
     },
     password: {
       id: "password",
       input_type: "password",
       placeholder: "Password",
       required: true,
-      initial_value:12345678,
+      initial_value: 12345678,
       validation: {
         type: "string",
         check: /[\d\w]{4,120}/,
       },
-      value:null,
+      value: null,
     },
-    
-  }
-}
+  },
+};
 
 const checks = {
-  unique: (obj,collection,field) => ![...new Set(getCollection(collection).map((a)=>a[field]))].includes(obj[field]),//true -- вільна каса 
-  required:(obj,collection,field) => obj[field],
-string:{
-  type:(str) =>typeof str === "string",
-  min_length: (str, num) => str.length > num,
-  max_length: (str, num) => str.length < num,
-  check: (str, regExp) => regExp.test(str),
-  unique:(value)=>value
-},
-number: {
-  type:(num) =>typeof num === 'string',
-  check: (num, regExp) => regExp.test(num),
-  unique:(value)=>value
-},
-}
+  unique: (obj, field, collection) =>
+    ![...new Set(getCollection(collection).map((a) => a[field]))].includes(
+      obj[field]
+    ), //true -- вільна каса
+  required: (obj, field) => obj[field],
+  string: {
+    type: (str) => typeof str === "string",
+    min_length: (str, num) => str.length > num,
+    max_length: (str, num) => str.length < num,
+    check: (str, regExp) => regExp.test(str),
+    unique: (value) => value,
+  },
+  number: {
+    type: (num) => typeof num === "string",
+    check: (num, regExp) => regExp.test(num),
+    unique: (value) => value,
+  },
+};
 
-const collection_type = {
-  users:{
-    nickname:{
-      unique:false,
-      required:true
+const acount_model = {
+  users: {
+    nickname: {
+      unique: false,
+      required: true,
+      type: "string",
+      min_length: 3,
     },
-    email:{
-      unique:true,
-      required:true
+    email: {
+      unique: true,
+      required: true,
+      type: "string",
+      check: reg_exp_email,
     },
-    password:{
-      unique:false,
-      required:true
+    password: {
+      unique: false,
+      required: true,
+      type: "string",
+      min_length: 4,
     },
   },
-
-  posts:{
-    title:{
-      unique:false,
-      required:true
+  posts: {
+    title: {
+      unique: false,
+      required: true,
     },
-    text:{
-      unique:false,
-      required:false
+    text: {
+      unique: false,
+      required: false,
     },
-    email:{
-      unique:false,
-      required:true
+    email: {
+      unique: false,
+      required: true,
     },
-  }
-}
-
-const user_model = {
-  nickname:{
-    unique:true,
-    type:'string',
-    min_length:3
   },
-  email:{
-    unique:true,
-    type:'string',
-    check:reg_exp_email
-  },
-  password:{
-    unique:false,
-    type:'string',
-    min_length:4
-  }
-  }
+};
 
-export {
-  login_obj,
-  sign_obj,
-  collection_type,
-  user_model,
-  checks
-}
+export { login_obj, sign_obj, acount_model, checks };
