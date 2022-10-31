@@ -1,4 +1,4 @@
-import { login_obj, sign_obj, acount_model, checks } from "./objectModel.js";
+import { login_obj, sign_obj,checks } from "./objectModel.js";
 let is_valid;
 export function isValidInput(type_obj) {
   is_valid = true;
@@ -36,14 +36,14 @@ export function isValidInput(type_obj) {
     }
   }
   if (is_valid) {
-    const submit = document.getElementById("submit");
+    const submit = document.getElementById("submit_reg");
     submit.disabled = false;
     submit.classList.remove("disabled-button");
   }
 }
 
 function setInvalidInput(input, obj) {
-  const submit = document.getElementById("submit");
+  const submit = document.getElementById("submit_reg");
   is_valid = false;
   input.classList.add(obj.error_style);
   submit.disabled = true;

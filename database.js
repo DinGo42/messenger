@@ -1,4 +1,4 @@
-import { acount_model, checks } from "./objectModel.js";
+import {checks,models} from "./objectModel.js";
 
 let l_database = {};
 
@@ -7,8 +7,9 @@ const saveToLocalStorage = () => {
 };
 
 const uploadFromLocalStorage = () => {
-  if (localStorage.getItem("database")) {
-    l_database = JSON.parse(localStorage.getItem("database")) ?? {};
+  const database = localStorage.getItem("database")
+  if (database) {
+    l_database = JSON.parse(database) ?? {};
   }
 };
 const addCollection = (name, value = []) => {
@@ -19,12 +20,10 @@ const addCollection = (name, value = []) => {
 
 const addObject = (obj, collection) => {
   let is_valid = true;
-  console.log(obj);
-
-  for (const field in acount_model[collection]) {
-    for (const check in acount_model[collection][field]) {
-      if (acount_model[collection][field][check] === true) {
-        if (!checks[check](obj, field, collection)) {
+  for (const field in models[collection]) {
+    for (const check in models[collection][field]) {
+      if (models[collection][field][check] === true) {
+        if (!checks[models[collection][field].type][check](obj, field, collection)) {
           is_valid = false;
         }
       }
