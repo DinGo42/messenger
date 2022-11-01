@@ -79,18 +79,21 @@ const sign_obj = {
   },
 };
 
-const checks = {
+const standard_checks = {
   unique: (obj, field, collection) =>
     ![...new Set(getCollection(collection).map((a) => a[field]))].includes(
       obj[field]
-    ), //true -- вільна каса
+    ),
   required: (obj, field) => obj[field],
+  check: (str, regExp) => regExp.test(str),
+};
+
+const checks = {
   string: {
     type: (str) => typeof str === "string",
     min_length: (str, num) => str.length > num,
     max_length: (str, num) => str.length < num,
-    check: (str, regExp) => regExp.test(str),
-    unique: (value) => value,
+    ...standard_checks,
   },
   number: {
     type: (num) => typeof num === "number",
@@ -98,41 +101,48 @@ const checks = {
   },
 };
 
-const acount_model = {
-  users: {
-    nickname: {
-      unique: false,
-      required: true,
-      type: "string",
-      min_length: 3,
-    },
-    email: {
-      unique: true,
-      required: true,
-      type: "string",
-      check: reg_exp_email,
-    },
-    password: {
-      unique: false,
-      required: true,
-      type: "string",
-      min_length: 4,
-    },
+const user_model = {
+  nickname: {
+    unique: false,
+    required: true,
+    type: "string",
+    min_length: 3,
   },
-  posts: {
-    title: {
-      unique: false,
-      required: true,
-    },
-    text: {
-      unique: false,
-      required: false,
-    },
-    email: {
-      unique: false,
-      required: true,
-    },
+  email: {
+    unique: true,
+    required: true,
+    type: "string",
+    check: reg_exp_email,
+  },
+  password: {
+    unique: false,
+    required: true,
+    type: "string",
+    min_length: 4,
   },
 };
 
-export { login_obj, sign_obj, acount_model, checks };
+const post_model = {
+  title: {
+    type: "string",
+    unique: false,
+    required: true,
+  },
+  text: {
+    type: "string",
+    unique: false,
+    required: false,
+  },
+  email: {
+    type: "string",
+    unique: false,
+    required: true,
+  },
+};
+
+const models = {
+  users: user_model,
+  posts: post_model,
+};
+
+export { login_obj, sign_obj, models, checks };

@@ -4,7 +4,7 @@ import { createUserObject } from "./userObject.js";
 export function loginLock(text, obj_type) {
   const lock_div = document.createElement("div");
   lock_div.classList.add("login-lock");
-  
+
   const login_window = document.createElement("div");
   login_window.classList.add("login-window");
 
@@ -23,7 +23,7 @@ export function loginLock(text, obj_type) {
   }
 
   const submit = document.createElement("button");
-  submit.id = "submit";
+  submit.id = "submit_reg";
   submit.innerText = "Submit";
   submit.classList.add("buttons-reg");
   submit.type = "submit";
@@ -52,7 +52,6 @@ function createInput(obj, { id, input_type, placeholder }) {
   input.name = id;
   input.type = input_type;
   input.placeholder = placeholder;
-  //input.value = initial_value;
   input.classList.add(obj.input_class);
   return input;
 }

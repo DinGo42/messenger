@@ -1,4 +1,4 @@
-import { acount_model, checks } from "./objectModel.js";
+import { models, checks } from "./objectModel.js";
 
 let l_database = {};
 
@@ -19,12 +19,13 @@ const addCollection = (name, value = []) => {
 
 const addObject = (obj, collection) => {
   let is_valid = true;
-  console.log(obj);
-
-  for (const field in acount_model[collection]) {
-    for (const check in acount_model[collection][field]) {
-      if (acount_model[collection][field][check] === true) {
-        if (!checks[check](obj, field, collection)) {
+  const current_collection = models[collection];
+  for (const field in current_collection) {
+    for (const check in current_collection[field]) {
+      if (current_collection[field][check] === true) {
+        if (
+          !checks[current_collection[field].type][check](obj, field, collection)
+        ) {
           is_valid = false;
         }
       }

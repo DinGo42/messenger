@@ -30,7 +30,6 @@ body {
 }
 
 main {
-
   margin-top: 60px;
   gap: 8px;
   height: 100%;
@@ -51,6 +50,7 @@ main {
 }
 
 #main {
+  overflow: auto;
   padding: 30px;
   margin-right: 8px;
   width: 100%;
@@ -189,7 +189,7 @@ footer {
   color: var(--color-white);
   transform: translateY(-4px);
 }
-#submit {
+#submit_reg {
   width: 100%;
   height: 50px;
   border-radius: 45px;
@@ -231,7 +231,7 @@ footer {
   color: var(--color-buttons-reg);
 }
 
-.post{
+.post {
   cursor: pointer;
   min-width: 150px;
   width: 23%;
@@ -251,16 +251,16 @@ footer {
 .post.growing {
   justify-content: flex-start;
   width: 100%;
-  height:auto;
+  height: auto;
 }
 
-.crated-post{
+.crated-post {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.title-post{
+.title-post {
   border-bottom: rgba(18, 18, 18, 1) solid 3px;
   width: 100%;
   height: 50px;
@@ -268,7 +268,7 @@ footer {
   align-items: center;
   justify-content: center;
 }
-.text-post{
+.text-post {
   width: 100%;
   height: 100px;
   display: flex;
@@ -282,13 +282,13 @@ footer {
 
 ::-webkit-scrollbar-track {
   margin: 20px;
-  background: none; 
+  background: none;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }

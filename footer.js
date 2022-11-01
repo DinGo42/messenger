@@ -1,5 +1,5 @@
 import { loginLock } from "./lockScreen&Inputs.js";
-import { login_obj, sign_obj, acount_model, checks } from "./objectModel.js";
+import { login_obj, sign_obj, checks } from "./objectModel.js";
 export function loginBar(status) {
   const loginBar = document.createElement("footer");
 
@@ -20,9 +20,9 @@ export function loginBar(status) {
   const text_info = document.createElement("h1");
   text_info.innerText = "Register to create your own posts";
 
-  const full = document.getElementById('full')
-  if(!full)return
-  
+  const full = document.getElementById("full");
+  if (!full) return;
+
   loginBar.insertAdjacentElement("beforeend", text_info);
   loginBar.insertAdjacentElement("beforeend", buttons_div);
   full.insertAdjacentElement("beforeend", loginBar);
