@@ -23,7 +23,7 @@ export function loginLock(text, obj_type) {
   }
 
   const submit = document.createElement("button");
-  submit.id = "submit_reg";
+  submit.id = "submit";
   submit.innerText = "Submit";
   submit.classList.add("buttons-reg");
   submit.type = "submit";

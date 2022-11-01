@@ -1,5 +1,5 @@
 import { loginLock } from "./lockScreen&Inputs.js";
-import { login_obj, sign_obj,checks } from "./objectModel.js";
+import { login_obj, sign_obj, acount_model, checks } from "./objectModel.js";
 export function loginBar(status) {
   const loginBar = document.createElement("footer");
 

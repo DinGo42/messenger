@@ -78,21 +78,19 @@ const sign_obj = {
     },
   },
 };
-const standard_checks = {
+
+const checks = {
   unique: (obj, field, collection) =>
     ![...new Set(getCollection(collection).map((a) => a[field]))].includes(
       obj[field]
-    ),
-    required: (obj, field) => obj[field],
-    check: (str, regExp) => regExp.test(str),
-}
-
-const checks = {
+    ), //true -- вільна каса
+  required: (obj, field) => obj[field],
   string: {
     type: (str) => typeof str === "string",
     min_length: (str, num) => str.length > num,
     max_length: (str, num) => str.length < num,
-    ...standard_checks,
+    check: (str, regExp) => regExp.test(str),
+    unique: (value) => value,
   },
   number: {
     type: (num) => typeof num === "number",
@@ -100,7 +98,8 @@ const checks = {
   },
 };
 
-const user_model = {
+const acount_model = {
+  users: {
     nickname: {
       unique: false,
       required: true,
@@ -119,30 +118,21 @@ const user_model = {
       type: "string",
       min_length: 4,
     },
-  }
-const post_model = {
+  },
+  posts: {
     title: {
-      type:'string',
       unique: false,
       required: true,
     },
     text: {
-      type:'string',
       unique: false,
       required: false,
     },
     email: {
-      type:'string',
       unique: false,
       required: true,
     },
-  }
+  },
+};
 
-
-  const models = {
-    users:user_model,
-    posts:post_model,
-  }
-
-
-export { login_obj, sign_obj,checks,models };
+export { login_obj, sign_obj, acount_model, checks };

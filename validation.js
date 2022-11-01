@@ -1,4 +1,4 @@
-import { login_obj, sign_obj,checks } from "./objectModel.js";
+import { login_obj, sign_obj, acount_model, checks } from "./objectModel.js";
 let is_valid;
 export function isValidInput(type_obj) {
   is_valid = true;
@@ -46,7 +46,6 @@ export function isValidInput(type_obj) {
 
 function setInvalidInput(input, obj) {
   const submit = document.getElementById("submit_reg");
-  if(!submit)return
   is_valid = false;
   input.classList.add(obj.error_style);
   submit.disabled = true;
