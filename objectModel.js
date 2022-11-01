@@ -95,7 +95,7 @@ const checks = {
     ...standard_checks,
   },
   number: {
-    type: (num) => typeof num === "string",
+    type: (num) => typeof num === "number",
     ...standard_checks,
   },
 };

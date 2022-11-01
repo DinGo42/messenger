@@ -1,4 +1,4 @@
-export const create_DOM = () => {
+export const createHTML = () => {
   const full = document.createElement('div')
   full.id='full'
 
@@ -33,6 +33,7 @@ export const create_DOM = () => {
 
   const main_bar = document.createElement('div')
   main_bar.id='main'
+  main_bar.style.overflow = 'auto'
   main.insertAdjacentElement('beforeend',left_bar)
   main.insertAdjacentElement('beforeend',main_bar)
 

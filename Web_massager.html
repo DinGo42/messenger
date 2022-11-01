@@ -18,7 +18,8 @@
   </head>
   <body>
     <script type="module">
-      import {create_DOM} from "./create_DOM_tree.js"
+      import { crate_post } from "./draw_posts.js";
+      import { createHTML } from "./create_DOM_tree.js";
       import { loginBar } from "./footer.js";
       import {
         l_database,
@@ -31,7 +32,7 @@
 
 
       if(!document.getElementById('full')){
-        create_DOM()
+        createHTML()
       }
       uploadFromLocalStorage();
       console.log(l_database);
@@ -39,6 +40,8 @@
       if (!localStorage.getItem("login_status")) {
         loginBar();
       }
+      const main = document.getElementById('main')
+      crate_post(l_database,main)
     </script>
   </body>
 </html>

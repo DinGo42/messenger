@@ -6,8 +6,9 @@ export function isValidInput(type_obj) {
     const field_obj = type_obj.fields[field];
     const input = document.getElementById(field_obj.id);
     const input_validation = field_obj.validation;
+    if(!input.value)return
 
-    if ((field_obj.required && !input.value) || !input.value === null) {
+    if ((field_obj.required && !input.value)) {
       is_valid = false;
     }
 
@@ -37,6 +38,7 @@ export function isValidInput(type_obj) {
   }
   if (is_valid) {
     const submit = document.getElementById("submit_reg");
+    if(!submit)return
     submit.disabled = false;
     submit.classList.remove("disabled-button");
   }
@@ -44,6 +46,7 @@ export function isValidInput(type_obj) {
 
 function setInvalidInput(input, obj) {
   const submit = document.getElementById("submit_reg");
+  if(!submit)return
   is_valid = false;
   input.classList.add(obj.error_style);
   submit.disabled = true;

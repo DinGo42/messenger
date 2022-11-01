@@ -4,7 +4,7 @@ import { createUserObject } from "./userObject.js";
 export function loginLock(text, obj_type) {
   const lock_div = document.createElement("div");
   lock_div.classList.add("login-lock");
-
+  
   const login_window = document.createElement("div");
   login_window.classList.add("login-window");
 

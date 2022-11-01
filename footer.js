@@ -21,6 +21,7 @@ export function loginBar(status) {
   text_info.innerText = "Register to create your own posts";
 
   const full = document.getElementById('full')
+  if(!full)return
   
   loginBar.insertAdjacentElement("beforeend", text_info);
   loginBar.insertAdjacentElement("beforeend", buttons_div);
