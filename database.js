@@ -7,9 +7,9 @@ const saveToLocalStorage = () => {
 };
 
 const uploadFromLocalStorage = () => {
-  if (localStorage.getItem("database")) {
-    l_database = JSON.parse(localStorage.getItem("database")) ?? {};
-  }
+  const database = localStorage.getItem("database")
+  if (!database)return
+    l_database = JSON.parse(database) ?? {};
 };
 const addCollection = (name, value = []) => {
   if (name in l_database) return;

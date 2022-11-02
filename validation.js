@@ -6,7 +6,7 @@ export function isValidInput(type_obj) {
     const field_obj = type_obj.fields[field];
     const input = document.getElementById(field_obj.id);
     const input_validation = field_obj.validation;
-    if (!input.value) return;
+    if (input || !input.value) return;
 
     if (field_obj.required && !input.value) {
       is_valid = false;

@@ -16,9 +16,11 @@ export const crate_post = (database,div) => {
 
     post.insertAdjacentElement('beforeend',title)
     post.insertAdjacentElement('beforeend',text)
+    const main = document.getElementById('main')
+    if(!main)return
     post.addEventListener('click',()=>{
       setTimeout(()=>post.classList.add('growing'),0)
-      setTimeout(()=>document.getElementById('main').addEventListener('click',()=>{
+      setTimeout(()=>main.addEventListener('click',()=>{
         post.classList.remove('growing')
       }),0)
   })

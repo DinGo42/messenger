@@ -1,14 +1,14 @@
 :root {
-  --color-black: black;
-  --color-bg: #121212;
-  --color-white: #fff;
-  --color-search-focus: #f2f2f2;
-  --color-search-bg: #242424;
-  --color-red: red;
-  --color-buttons-reg: #2ee59d;
+  --color-black: rgba(0, 0, 0, 1);
+  --color-bg: rgba(18, 18, 18, 1);;
+  --color-white: rgba(255, 255, 255, 1);
+  --color-search-focus: rgba(242, 242, 242, 1);;
+  --color-search-bg: rgba(36, 36, 36, 1);;
+  --color-red: rgba(255, 0, 0, 1);;
+  --color-buttons-reg: rgba(46, 229, 157, 1);;
   --color-buttons-reg-enebled: rgba(46, 229, 157, 0.4);
-  --color-button-disabled: gray;
-  --color-bar: #121212;
+  --color-button-disabled: rgba(128, 128, 128, 1);;
+  --color-bar: rgba(18, 18, 18, 1);;
   --color-lock: rgba(129, 16, 16, 0);
 }
 body {
