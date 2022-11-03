@@ -3,10 +3,10 @@ import { createUserObject } from "./userObject.js";
 
 export function loginLock(text, obj_type) {
   const lock_div = document.createElement("div");
-  lock_div.classList = "login-lock";
+  lock_div.classList.add("login-lock");
 
   const login_window = document.createElement("div");
-  login_window.classList = "login-window";
+  login_window.classList.add("login-window");
 
   const login_form = document.createElement("form");
   login_form.id = "login-form";
@@ -18,25 +18,18 @@ export function loginLock(text, obj_type) {
   for (const field in obj_type.fields) {
     login_form.insertAdjacentElement(
       "beforeend",
-      createInputs(obj_type, obj_type.fields[field])
+      createInput(obj_type, obj_type.fields[field])
     );
   }
 
   const submit = document.createElement("button");
-  submit.id = "submit";
+  submit.id = "submit_reg";
   submit.innerText = "Submit";
-  submit.classList = "buttons-reg";
+  submit.classList.add("buttons-reg");
   submit.type = "submit";
   submit.disabled = true;
   submit.classList.add("disabled-button");
-  submit.onclick = () => {
-    const user_object = {};
-    for (const field in obj_type.fields) {
-      user_object[field] = obj_type.fields[field].value;
-    }
-    createUserObject(user_object);
-    return false;
-  };
+  submit.onclick = () => createInputs(obj_type);
 
   login_window.insertAdjacentHTML("afterbegin", `<h1>${text}</h1>`);
   login_form.insertAdjacentElement("beforeend", submit);
@@ -44,22 +37,21 @@ export function loginLock(text, obj_type) {
   lock_div.insertAdjacentElement("beforeend", login_window);
   document.body.append(lock_div);
 }
-
-function createInputs(
-  obj,
-  {
-    id,
-    input_type,
-    placeholder,
-    //initial_value
+const createInputs = (type) => {
+  const user_object = {};
+  for (const field in type.fields) {
+    user_object[field] = type.fields[field].value;
   }
-) {
+  createUserObject(user_object);
+  return false;
+};
+
+function createInput(obj, { id, input_type, placeholder }) {
   const input = document.createElement("input");
   input.id = id;
   input.name = id;
   input.type = input_type;
   input.placeholder = placeholder;
-  //input.value = initial_value;
-  input.classList = obj.input_class;
+  input.classList.add(obj.input_class);
   return input;
 }
