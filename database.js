@@ -33,6 +33,12 @@ const addObject = (obj, collection) => {
   }
 
   if (!is_valid) return;
+  if(!localStorage.getItem("current_user")){
+    let id = create_id(models.users.id)
+    if(!find({id:id},'users'))id = create_id(models.users.id)
+    obj.id = id
+    localStorage.setItem('current_user',obj.id)
+  }
   l_database[collection].push(obj);
   saveToLocalStorage();
 };
@@ -45,6 +51,17 @@ const getCollection = (name) => {
 const getObject = (obj, collection) => {
   if (obj in collection) return collection[obj];
 };
+
+const create_id = (interval) => {
+  let id = ['USR']
+    for(let int = 1; int<interval+1; int++){
+      id.push((Math.random()).toString(36).substring(2))
+      if(id[int].length !== interval){
+        id[int] = id[int].substring(2,interval+2)
+      }
+  }
+  return id.join('-')
+}
 
 const find = (condition_obj, collection) => {
   return l_database[collection].filter((item) => {

@@ -28,6 +28,7 @@
         getCollection,
         getObject,
         uploadFromLocalStorage,
+        find,
       } from "./database.js";
 
       if (!document.getElementById("full")) {
@@ -35,12 +36,15 @@
       }
       uploadFromLocalStorage();
       console.log(l_database);
-
-      if (!localStorage.getItem("login_status")) {
+      const current_user = localStorage.getItem("current_user")
+      if (!current_user) {
         loginBar();
       }
+      console.log(find({id:current_user},'users'))
       const main = document.getElementById("main");
-      crate_post(l_database, main);
+
+      crate_post(find({id:current_user},'posts'), main);
+     
     </script>
   </body>
 </html>
