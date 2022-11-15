@@ -35,12 +35,12 @@
         createMainHtml();
       }
       uploadFromLocalStorage();
-      console.log(l_database);
       const current_user = localStorage.getItem("current_user")
       if (!current_user) {
         loginBar();
       }
-      console.log(find({id:current_user},'users'))
+      console.log(l_database)
+      console.log(current_user)
       const main = document.getElementById("main");
 
       crate_post(find({id:current_user},'posts'), main);

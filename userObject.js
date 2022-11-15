@@ -9,7 +9,7 @@ import {
 
 import { login_obj, sign_obj, models, checks } from "./objectModel.js";
 
-export const createUserObject = (user_values) => {
+export const createUserObject = (user_values,type) => {
   for (const key in user_values) {
     if (!models.users[key]) {
       console.error("wrong object");
@@ -31,5 +31,12 @@ export const createUserObject = (user_values) => {
     }
   }
   addCollection("users");
-  addObject(user_values, "users");
+  const user = find(user_values,'users')
+  if(type == 'login'){
+    if(user.length === 1)localStorage.setItem('current_user',user[0].id)
+  }
+  else if(type == 'sign'){
+    if(user.length === 0)localStorage.setItem('current_user',user[0].id)
+    addObject(user_values, "users");
+  }
 };

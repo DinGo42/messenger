@@ -2,6 +2,7 @@ import { getCollection } from "./database.js";
 const reg_exp_email = /[a-f0-9]*@\w{3,5}\.[a-f]{0,3}/;
 
 const login_obj = {
+  type:'login',
   error_style: "invalid",
   input_class: "login-input",
   fields: {
@@ -35,6 +36,7 @@ const login_obj = {
 };
 
 const sign_obj = {
+  type:'sign',
   error_style: "invalid",
   input_class: "login-input",
   fields: {
@@ -120,6 +122,7 @@ const user_model = {
     type: "string",
     min_length: 4,
   },
+  id:3,
 };
 
 const post_model = {
@@ -133,7 +136,7 @@ const post_model = {
     unique: false,
     required: false,
   },
-  email: {
+  id: {
     type: "string",
     unique: false,
     required: true,
