@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="mainStyleMassager.css" />
+    <link rel="stylesheet" href="/css/mainStyleMassager.css" />
     <link href="https://css.gg/css?=|home" rel="stylesheet" />
 
-    <script src="./database.js" type="module"></script>
-    <script src="./objectModel.js" type="module"></script>
-    <script src="./footer.js" type="module"></script>
-    <script src="./lockScreen&Inputs.js" type="module"></script>
-    <script src="./validation.js" type="module"></script>
+    <script src="/database/database.js" type="module"></script>
+    <script src="/models/objectModel.js" type="module"></script>
+    <script src="/main/footer.js" type="module"></script>
+    <script src="/registration/registration.js" type="module"></script>
+    <script src="/checks/validation.js" type="module"></script>
 
     <title>Massager</title>
     <style>
@@ -18,9 +18,9 @@
   </head>
   <body>
     <script type="module">
-      import { crate_post } from "./createPosts.js";
-      import { createMainHtml } from "./createMain.js";
-      import { loginBar } from "./footer.js";
+      import { createPost,createAppendPostForm} from "/posts/createPosts.js";
+      import { createMainHtml } from "/main/createMain.js";
+      import { loginBar } from "/main/footer.js";
       import {
         l_database,
         addCollection,
@@ -29,22 +29,21 @@
         getObject,
         uploadFromLocalStorage,
         find,
-      } from "./database.js";
-
+      } from "/database/database.js";
+      import {models} from '/models/objectModel.js'
+      uploadFromLocalStorage();
       if (!document.getElementById("full")) {
         createMainHtml();
       }
-      uploadFromLocalStorage();
       const current_user = localStorage.getItem("current_user")
       if (!current_user) {
         loginBar();
       }
-      console.log(l_database)
-      console.log(current_user)
-      const main = document.getElementById("main");
-
-      crate_post(find({id:current_user},'posts'), main);
-     
+      const user_posts = document.getElementById("user-posts");
+      createAppendPostForm(user_posts)
+      find({userId:current_user},'posts').forEach(post => {
+        createPost(models.posts,post, user_posts)
+      });
     </script>
   </body>
 </html>
