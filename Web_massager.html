@@ -39,6 +39,7 @@
       if (!current_user) {
         loginBar();
       }
+      console.log('current_user')
       const user_posts = document.getElementById("user-posts");
       createAppendPostForm(user_posts)
       find({userId:current_user},'posts').forEach(post => {

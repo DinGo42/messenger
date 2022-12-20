@@ -30,9 +30,10 @@ export const createMainHtml = () => {
 
   const left_bar = document.createElement("div");
   left_bar.id = "left-control-bar";
-
+  left_bar.style.height = document.documentElement.clientHeight - 70 +'px'
   const main_bar = document.createElement("div");
   main_bar.id = "main";
+  main_bar.style.height = document.documentElement.clientHeight - 70 +'px'
   main_bar.style.overflow = "auto";
   main.insertAdjacentElement("beforeend", left_bar);
   main.insertAdjacentElement("beforeend", main_bar);
@@ -41,7 +42,7 @@ export const createMainHtml = () => {
   user_posts.id = 'user-posts'
 
   const text = document.createElement('h1')
-  text.innerText = 'our posts'
+  text.innerText = 'your posts'
   main_bar.insertAdjacentElement('afterbegin',user_posts) 
   main_bar.insertAdjacentElement('afterbegin',text)
 
