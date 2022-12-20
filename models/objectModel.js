@@ -1,6 +1,6 @@
 import { getCollection } from "/database/database.js";
 const reg_exp_email = /[a-f0-9]*@\w{3,5}\.[a-f]{0,3}/;
-
+//
 const login_obj = {
   type:'logIn',
   window_text:'Log in',

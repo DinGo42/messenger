@@ -8,7 +8,7 @@ import { canseledEdit, deleteElem} from "/editingFunc.js";
 import { editPost } from "/posts/editPost.js";
 import { signUp, logIn } from "/registration/registration.js";
 import { lockWindowForm } from "./createWindowLock.js";
-
+//
 const postForm = (obj) => {
   const sign_up_lock = lockWindowForm()
   const submit = createElement(obj.submit_button)

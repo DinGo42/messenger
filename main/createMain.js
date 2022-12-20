@@ -1,5 +1,3 @@
-import { find } from "/database/database.js";
-import { createPost } from "/posts/createPosts.js";
 export const createMainHtml = () => {
   const full = document.createElement("div");
   full.id = "full";

@@ -4,4 +4,5 @@ const lockWindowForm = () => {
   lock.classList.add('window-lock')
   return lock
 }
+//
 export {lockWindowForm}

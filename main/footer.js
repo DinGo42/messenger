@@ -1,5 +1,4 @@
 import { createingSignUpForm,createLogInForm } from "/constructors/formConstructors.js";
-import { login_obj, sign_obj, checks } from "/models/objectModel.js";
 export function loginBar(status) {
   const loginBar = document.createElement("footer");
 
