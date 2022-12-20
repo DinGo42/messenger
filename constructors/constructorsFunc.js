@@ -12,5 +12,4 @@ const createElement = ({elem_type, id, type, placeholder, value, text, name, cla
         elem.disabled = disabled;
         return elem;
 }
-//
 export {createElement}

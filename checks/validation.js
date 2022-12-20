@@ -1,5 +1,4 @@
 import { login_obj, sign_obj, checks } from "/models/objectModel.js";
-//
 let is_valid;
 export function isValidInput(type_obj) {
  is_valid = true;

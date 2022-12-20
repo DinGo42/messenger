@@ -3,7 +3,6 @@ import { deleteElem} from '/editingFunc.js'
 import { editPost } from '/posts/editPost.js'
 import {postForm} from '/constructors/formConstructors.js'
 import {growAnimation} from '/animations/grow.js'
-//
 const createAppendPostForm = (place) => {
   const div = document.createElement('div')
   div.id = 'add_post'

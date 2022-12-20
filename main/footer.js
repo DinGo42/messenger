@@ -1,5 +1,5 @@
 import { createingSignUpForm,createLogInForm } from "/constructors/formConstructors.js";
-export function loginBar(status) {
+export function loginBar() {
   const loginBar = document.createElement("footer");
 
   const buttons_div = document.createElement("div");

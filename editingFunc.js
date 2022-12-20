@@ -1,6 +1,5 @@
 import { createElement } from '/constructors/constructorsFunc.js'
 import { deleteObj,find } from '/database/database.js'
-//
 const deleteElem = (obj,elem) => {
   const button = createElement(obj.delete_button)
   elem.firstChild.append(button)
