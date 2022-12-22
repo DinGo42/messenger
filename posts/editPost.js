@@ -1,20 +1,20 @@
-import { createElement } from "/constructors/constructorsFunc.js"
-import { edit_post_form,models} from "/models/objectModel.js"
-import {editObject,find} from "/database/database.js"
-import {editPostForm} from '/constructors/formConstructors.js'
-const editPost = (obj_model,elem) => {
-const edit = createElement(obj_model.submit_button)
-edit.onclick = () => { 
-  const current_post_value = find({id:elem.id},'posts')[0]
-  Object.keys(current_post_value).forEach((a) =>{
-    if(edit_post_form.fields[a]){
-      edit_post_form.fields[a].value = current_post_value[a]
-    }
-  })
-  const Log_in_lock = editPostForm(edit_post_form,elem)
-  document.body.append(Log_in_lock)
-}
-elem.firstChild.append(edit)
-}
-export {editPost}
-
+import { createElement } from "/constructors/elemConstrustor.js";
+import { models } from "/models/objectModel.js";
+import { find } from "/database/database.js";
+import { editPostForm } from "/constructors/post Edit Form/postEditForm.js";
+const editPost = ({ submit_button }, elem) => {
+  const edit_post_form = models.edit_post;
+  const edit = createElement(submit_button);
+  edit.onclick = () => {
+    const current_post_value = find({ id: elem.id }, "posts")[0];
+    Object.keys(current_post_value).forEach((a) => {
+      if (edit_post_form.fields[a]) {
+        edit_post_form.fields[a].value = current_post_value[a];
+      }
+    });
+    const log_in_lock = editPostForm(edit_post_form, elem);
+    document.body.append(log_in_lock);
+  };
+  elem.firstChild.append(edit);
+};
+export { editPost };

@@ -8,7 +8,6 @@
     <script src="/database/database.js" type="module"></script>
     <script src="/models/objectModel.js" type="module"></script>
     <script src="/main/footer.js" type="module"></script>
-    <script src="/registration/registration.js" type="module"></script>
     <script src="/checks/validation.js" type="module"></script>
 
     <title>Massager</title>
@@ -18,7 +17,7 @@
   </head>
   <body>
     <script type="module">
-      import { createPost,createAppendPostForm} from "/posts/createPosts.js";
+      import { createPost, createAppendPostForm } from "/posts/createPosts.js";
       import { createMainHtml } from "/main/createMain.js";
       import { loginBar } from "/main/footer.js";
       import {
@@ -26,23 +25,22 @@
         addCollection,
         addObject,
         getCollection,
-        getObject,
         uploadFromLocalStorage,
         find,
       } from "/database/database.js";
-      import {models} from '/models/objectModel.js'
+      import { models } from "/models/objectModel.js";
       uploadFromLocalStorage();
       if (!document.getElementById("full")) {
         createMainHtml();
       }
-      const current_user = localStorage.getItem("current_user")
+      const current_user = localStorage.getItem("current_user");
       if (!current_user) {
         loginBar();
       }
       const user_posts = document.getElementById("user-posts");
-      createAppendPostForm(user_posts)
-      find({userId:current_user},'posts').forEach(post => {
-        createPost(models.posts,post, user_posts)
+      createAppendPostForm(user_posts);
+      find({ userId: current_user }, "posts").forEach((post) => {
+        createPost(models.posts, post, user_posts);
       });
     </script>
   </body>

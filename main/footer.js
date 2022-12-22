@@ -1,4 +1,5 @@
-import { createingSignUpForm,createLogInForm } from "/constructors/formConstructors.js";
+import { createingSignUpForm } from "/constructors/sign Up Form/signUpForm.js";
+import { createLogInForm } from "/constructors/log In Form/logInForm.js";
 export function loginBar() {
   const loginBar = document.createElement("footer");
 
