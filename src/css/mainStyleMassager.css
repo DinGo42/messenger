@@ -1,14 +1,14 @@
 :root {
   --color-black: rgba(0, 0, 0, 1);
-  --color-bg: rgba(18, 18, 18, 1);;
+  --color-bg: rgba(18, 18, 18, 1);
   --color-white: rgba(255, 255, 255, 1);
-  --color-search-focus: rgba(242, 242, 242, 1);;
-  --color-search-bg: rgba(36, 36, 36, 1);;
-  --color-red: rgba(255, 0, 0, 1);;
-  --color-buttons-reg: rgba(46, 229, 157, 1);;
+  --color-search-focus: rgba(242, 242, 242, 1);
+  --color-search-bg: rgba(36, 36, 36, 1);
+  --color-red: rgba(255, 0, 0, 1);
+  --color-buttons-reg: rgba(46, 229, 157, 1);
   --color-buttons-reg-enebled: rgba(46, 229, 157, 0.4);
-  --color-button-disabled: rgba(128, 128, 128, 1);;
-  --color-bar: rgba(18, 18, 18, 1);;
+  --color-button-disabled: rgba(128, 128, 128, 1);
+  --color-bar: rgba(18, 18, 18, 1);
   --color-lock: rgba(129, 16, 16, 0);
 }
 body {
@@ -54,6 +54,7 @@ main {
   padding: 30px;
   margin-right: 8px;
   width: 100%;
+  max-width: 100%;
   min-height: 500px;
   height: 600px;
   background: var(--color-bar);
@@ -78,7 +79,7 @@ header {
   padding-left: 45px;
   border: 0;
   color: var(--color-white);
-  background: url(search.png) no-repeat left var(--color-search-bg);
+  background: url(../icons/search.png) no-repeat left var(--color-search-bg);
   background-position: 10px;
   background-size: 25px;
   cursor: pointer;
@@ -110,7 +111,7 @@ header {
   padding: 0px 8px 0px 0px;
   gap: 8px;
 }
-.login-lock {
+.window-lock {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -122,7 +123,7 @@ header {
   backdrop-filter: blur(10px);
 }
 
-.login-window {
+.authorization-window {
   width: 400px;
   padding: 30px;
   background: var(--color-black);
@@ -133,7 +134,7 @@ header {
   border-radius: 30px;
   gap: 10px;
 }
-.login-input {
+.authorization-input {
   border-radius: 10px;
   width: 100%;
   height: 35px;
@@ -153,7 +154,13 @@ footer {
   border-radius: 10px;
   background: var(--color-bg);
 }
-#login-form {
+#sign-up-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+#log-in-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -232,13 +239,16 @@ footer {
 }
 
 .post {
+  flex: grow 1;
   cursor: pointer;
-  min-width: 150px;
-  width: 23%;
-  height: 150px;
+  width: fit-content;
+  height: fit-content;
+  width: 200px;
+  min-width: 23%;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background: blue;
   padding: 10px;
   align-items: flex-start;
@@ -246,6 +256,23 @@ footer {
   margin: 5px;
   color: black;
   transition: all 2s;
+}
+
+#add_post {
+  width: 200px;
+  height: 190px;
+}
+
+#user-posts {
+  align-items: stretch;
+  align-content: stretch;
+  display: flex;
+  grid-template-rows: 1fr 2fr 1fr;
+  gap: 5px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
 }
 
 .post.growing {
