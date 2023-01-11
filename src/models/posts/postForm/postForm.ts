@@ -1,13 +1,14 @@
 export const post_form = {
-	css: 'post',
+	css: 'post-form',
 	error_style: 'invalid',
 	id: 3,
 	type: 'POST',
 	submit_button: {
 		elem_type: 'button',
+		disabled:true,
 		id: 'save-form',
 		name: 'saveButton',
-		classList: 'form',
+		classList: 'submit',
 		text: 'Save',
 		type: 'button',
 	},

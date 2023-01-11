@@ -6,7 +6,7 @@ import { createInputsValueObject, checkUserObject } from '../../checks/userObjec
 import { drawPost } from '../../posts/createPosts';
 import { models } from '../../models/objectModel';
 
-import { editObject } from '../../database/database';
+import { editObject, find } from '../../database/database';
 import { editPost } from '../../posts/editPost';
 import { deleteElem } from '../../changeFunctions/delete/delete';
 
@@ -45,8 +45,28 @@ export const editPostForm = (obj, elem) => {
 		checkUserObject(models.posts, value);
 		editObject('posts', value);
 		lock_window.remove();
-		editPost(models.posts, post);
-		deleteElem(models.posts, post);
+
+
+		const top_bar = document.createElement('div');
+		top_bar.classList.add('top-bar');
+	
+  
+		const buttons = document.createElement('div');
+		buttons.classList.add('buttons');
+		top_bar.insertAdjacentElement('afterbegin', buttons);
+		post.insertAdjacentElement('afterbegin', top_bar);
+
+		const edit = editPost(models.posts, post,models.edit_post);
+		buttons.insertAdjacentElement('beforeend',edit);
+		const remove = 	deleteElem(models.posts, post);
+		buttons.insertAdjacentElement('beforeend',remove);
+		const userId = find({id:post.id},'posts')[0].userId;
+		const user_nickname = find({id:userId},'users')[0].nickname;
+		const nickname_div = document.createElement('div');
+		nickname_div.classList.add('user-nickname-bar');
+		nickname_div.innerText = 'By : ' + user_nickname;
+
+		top_bar.insertAdjacentElement('beforeend',nickname_div);
 		elem.parentNode.replaceChild(post, elem);
 	};
 	Log_in_window.insertAdjacentElement('afterbegin', post);

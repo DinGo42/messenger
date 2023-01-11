@@ -4,6 +4,7 @@ import { createInputsValueObject } from '../../checks/userObject';
 import { logIn } from '../../authorization/logIn/logIn';
 import { lockWindowForm } from '../../constructors/createWindowLock';
 import { createElement } from '../../constructors/elemConstrustor';
+import { createSignUpForm } from '../signUpForm/signUpForm';
 
 export const createLogInForm = () => {
 	const login_obj = models.log_in;
@@ -28,6 +29,13 @@ export const createLogInForm = () => {
 		);
 	}
 	const submit = createElement(login_obj.submit_button);
+	const to_sign_up = document.createElement('h3');
+	to_sign_up.innerText = 'Go to sign up';
+	to_sign_up.classList.add('to-other-authorization');
+	to_sign_up.onclick = () => {
+		lock_window.remove();
+		createSignUpForm();
+	};
 	submit.onclick = () => logIn(createInputsValueObject(login_obj));
 	Log_in_window.insertAdjacentHTML(
 		'afterbegin',
@@ -36,6 +44,7 @@ export const createLogInForm = () => {
 	Log_in_window.insertAdjacentElement('afterbegin', exit);
 	form.insertAdjacentElement('beforeend', submit);
 	Log_in_window.insertAdjacentElement('beforeend', form);
+	Log_in_window.insertAdjacentElement('beforeend',to_sign_up);
 	lock_window.insertAdjacentElement('beforeend', Log_in_window);
 	document.body.append(lock_window);
 };

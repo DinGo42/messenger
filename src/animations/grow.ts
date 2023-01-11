@@ -1,5 +1,9 @@
+import e from 'express';
+import {influxAnimation} from '../animations/influx';
 const growAnimation = (elem, save_zone) => {
-	setTimeout(() => elem.classList.add('growing'), 0);
+	setTimeout(() => {
+		elem.classList.add('growing');
+	}, 0);
 	setTimeout(
 		() => save_zone.addEventListener('click', () => {
 			elem.classList.remove('growing');

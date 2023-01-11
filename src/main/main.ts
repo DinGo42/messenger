@@ -1,4 +1,9 @@
+import { uploadFromLocalStorage } from '../database/database';
+import { loginBar } from './footer';
+import {personalArea} from './personalArea/personalArea';
+import { postsArea } from './postsArea/postsArea';
 export const createMainHtml = () => {
+  
 	const full = document.createElement('div');
 	full.id = 'full';
 
@@ -14,11 +19,11 @@ export const createMainHtml = () => {
 
 	const logo_img = document.createElement('img');
 	logo_img.classList.add('logo');
-	// logo_img.src = '../icons/superLogo.png';
 	logo.insertAdjacentElement('beforeend', logo_img);
 
 	const user = document.createElement('div');
 	user.classList.add('user');
+	user.onclick = personalArea;
 
 	header.insertAdjacentElement('beforeend', logo);
 	header.insertAdjacentElement('beforeend', search);
@@ -29,20 +34,23 @@ export const createMainHtml = () => {
 	const left_bar = document.createElement('div');
 	left_bar.id = 'left-control-bar';
 	left_bar.style.height = `${document.documentElement.clientHeight - 70}px`;
+
+	const posts = document.createElement('p');
+	posts.classList.add('navigation');
+	posts.innerText = 'Posts';
+	left_bar.insertAdjacentElement('beforeend',posts);
+	posts.onclick = postsArea;
+
+  
+
+
+
 	const main_bar = document.createElement('div');
 	main_bar.id = 'main';
 	main_bar.style.height = `${document.documentElement.clientHeight - 70}px`;
 	main_bar.style.overflow = 'auto';
 	main.insertAdjacentElement('beforeend', left_bar);
 	main.insertAdjacentElement('beforeend', main_bar);
-
-	const user_posts = document.createElement('div');
-	user_posts.id = 'user-posts';
-
-	const text = document.createElement('h1');
-	text.innerText = 'your posts';
-	main_bar.insertAdjacentElement('afterbegin', user_posts);
-	main_bar.insertAdjacentElement('afterbegin', text);
 
 	full.insertAdjacentElement('beforeend', header);
 	full.insertAdjacentElement('beforeend', main);

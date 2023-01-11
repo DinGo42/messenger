@@ -5,9 +5,13 @@ import { create_id } from '../../database/database';
 import { createPost } from '../../posts/createPosts';
 import { lockWindowForm } from '../../constructors/createWindowLock';
 import { createElement } from '../../constructors/elemConstrustor';
+import { createSignUpForm } from '../signUpForm/signUpForm';
 
 export const postForm = () => {
-  const post_obj = models.post_form
+	if(localStorage.getItem('current)user')=='null' || localStorage.getItem('current)user')== null){
+		return createSignUpForm ();
+	}
+	const post_obj = models.post_form;
 	const lock_window = lockWindowForm();
 	const submit = createElement(post_obj.submit_button);
 	const exit = createElement(post_obj.reject_button);
@@ -41,7 +45,7 @@ export const postForm = () => {
 		}
 		createPost(models.posts, value, user_posts);
 	};
-  post.insertAdjacentElement('afterbegin', exit);
+	post.insertAdjacentElement('afterbegin', exit);
 	document.body.append(lock_window);
 	lock_window.insertAdjacentElement('beforeend', post);
 };

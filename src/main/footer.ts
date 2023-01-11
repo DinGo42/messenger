@@ -1,4 +1,4 @@
-import { createingSignUpForm } from '../forms/signUpForm/signUpForm';
+import { createSignUpForm } from '../forms/signUpForm/signUpForm';
 import { createLogInForm } from '../forms/logInForm/logInForm';
 
 export function loginBar() {
@@ -29,7 +29,7 @@ export function loginBar() {
 	full.insertAdjacentElement('beforeend', loginBar);
 
 	sign.onclick = () => {
-		createingSignUpForm();
+		createSignUpForm();
 	};
 
 	login.onclick = () => {

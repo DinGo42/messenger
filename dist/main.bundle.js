@@ -565,14 +565,14 @@ exports.postForm = postForm;
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createingSignUpForm = void 0;
+exports.createSignUpForm = void 0;
 const elemConstrustor_1 = __webpack_require__(/*! ../../constructors/elemConstrustor */ "./src/constructors/elemConstrustor.ts");
 const createWindowLock_1 = __webpack_require__(/*! ../../constructors/createWindowLock */ "./src/constructors/createWindowLock.ts");
 const objectModel_1 = __webpack_require__(/*! ../../models/objectModel */ "./src/models/objectModel.ts");
 const validation_1 = __webpack_require__(/*! ../../checks/validation */ "./src/checks/validation.ts");
 const signUp_1 = __webpack_require__(/*! ../../authorization/signUp/signUp */ "./src/authorization/signUp/signUp.ts");
 const userObject_1 = __webpack_require__(/*! ../../checks/userObject */ "./src/checks/userObject.ts");
-const createingSignUpForm = () => {
+const createSignUpForm = () => {
     const sign_obj = objectModel_1.models.sign_up;
     const sign_up_lock = (0, createWindowLock_1.lockWindowForm)();
     const exit = (0, elemConstrustor_1.createElement)(sign_obj.reject_button);
@@ -600,7 +600,7 @@ const createingSignUpForm = () => {
     sign_up_lock.insertAdjacentElement('beforeend', sign_up_window);
     document.body.append(sign_up_lock);
 };
-exports.createingSignUpForm = createingSignUpForm;
+exports.createSignUpForm = createSignUpForm;
 
 
 /***/ }),
@@ -668,7 +668,7 @@ function loginBar() {
     loginBar.insertAdjacentElement('beforeend', buttons_div);
     full.insertAdjacentElement('beforeend', loginBar);
     sign.onclick = () => {
-        (0, signUpForm_1.createingSignUpForm)();
+        (0, signUpForm_1.createSignUpForm)();
     };
     login.onclick = () => {
         (0, logInForm_1.createLogInForm)();

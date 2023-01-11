@@ -1,11 +1,11 @@
 export const edit_post_form = {
 	css: 'edit-post',
 	error_style: 'invalid',
-
+  collection:'posts',
 	submit_button: {
 		elem_type: 'button',
 		id: 'save-edit',
-		classList: 'edit',
+		classList: 'submit',
 		text: 'Save',
 		type: 'button',
 	},
