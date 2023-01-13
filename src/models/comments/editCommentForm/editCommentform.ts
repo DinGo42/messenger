@@ -1,0 +1,53 @@
+export const edit_comment_form = {
+	css: 'edit-comment',
+	error_style: 'invalid',
+	collection:'comments',
+	submit_button: {
+		elem_type: 'button',
+		id: 'save-edit',
+		classList: 'submit',
+		text: 'Save',
+		type: 'button',
+	},
+	reject_edit: {
+		elem_type: 'button',
+		id: 'reject-edit',
+		classList: 'reject',
+		text: 'Cansel',
+		type: 'button',
+	},
+	edit_button: {
+		elem_type: 'button',
+		id: 'edit-text',
+		classList: 'comment-model',
+		input_class: 'model',
+		text: 'Edit',
+		type: 'button',
+	},
+	delete_button: {
+		elem_type: 'button',
+		id: 'delete-comment',
+		classList: 'comment-model',
+		input_class: 'model',
+		text: 'X',
+		type: 'button',
+	},
+	fields: {
+		text: {
+			elem_type: 'input',
+			value: null,
+			text:'asdad',
+			id: 'text_comment_form_edit_input',
+			classList: 'authorization-input',
+			type: 'text',
+			placeholder: 'text',
+			validation: {
+				required: true,
+				type: 'string',
+				max_length: 250,
+				min_length: 5,
+			},
+			css: 'text-comment',
+		},
+	},
+};
