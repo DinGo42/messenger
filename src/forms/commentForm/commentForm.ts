@@ -1,4 +1,3 @@
-import { lockWindowForm } from '../../constructors/createWindowLock';
 import { models } from '../../models/objectModel';
 import { createElement } from '../../constructors/elemConstrustor';
 import { isValidInput } from '../../checks/validation';
@@ -20,7 +19,7 @@ export const createCommentForm = ({id}) => {
 	};
 
 	submit.onclick = () => {
-		if(localStorage.getItem('current)user')=='null' || localStorage.getItem('current)user')== null){
+		if(localStorage.getItem('current_user')=='null' || localStorage.getItem('current_user')== null){
 			return createSignUpForm ();
 		}
 		const input_value = createInputsValueObject(model);

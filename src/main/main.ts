@@ -1,5 +1,3 @@
-import { uploadFromLocalStorage } from '../database/database';
-import { loginBar } from './footer';
 import {personalArea} from './personalArea/personalArea';
 import { postsArea } from './postsArea/postsArea';
 export const createMainHtml = () => {

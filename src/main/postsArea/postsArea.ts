@@ -16,10 +16,11 @@ export const postsArea = () => {
 	const user_posts = document.createElement('h1');
 	user_posts.innerText = 'Your posts';
 	main.insertAdjacentElement('afterbegin',user_posts);
-
 	find({ userId: current_user }, 'posts').forEach((post) => {
 		createPost(models.posts, post, user_posts_block);
 	});
+
+
 	main.insertAdjacentElement('beforeend',user_posts_block);
 
 	const other_posts = document.createElement('h1');
@@ -29,10 +30,13 @@ export const postsArea = () => {
 	const other_posts_block = document.createElement('div');
 	other_posts_block.classList.add('posts-block');
 	other_posts_block.id = 'other-posts';
-
-	l_database.posts.forEach((post) => {
-		createPost(models.posts, post, other_posts_block);
-	});
+	const posts = l_database.posts;
+	if(posts.length !== 0 ){
+		posts.forEach((post) => {
+			createPost(models.posts, post, other_posts_block);
+		});
+	}
+	
 	main.insertAdjacentElement('beforeend',other_posts_block);
  
 };

@@ -5,21 +5,24 @@ import { isValidInput } from '../../checks/validation';
 import { createInputsValueObject, checkUserObject } from '../../checks/userObject';
 import { drawPost } from '../../posts/createPosts';
 import { models } from '../../models/objectModel';
-
+import { editPost } from '../../changeFunctions/edit/editPost'
 import { editObject, find } from '../../database/database';
-import { editPost } from '../../posts/editPost';
 import { deleteElem } from '../../changeFunctions/delete/delete';
+import { appendComment } from '../../comments/appendComments';
 
-export const editPostForm = (obj, elem) => {
+let isOpenPost = false;  
+let isOpenComments = false;
+
+export const editPostForm = (values, elem) => {
 	const lock_window = lockWindowForm();
 	const Log_in_window = document.createElement('div');
 	Log_in_window.classList.add('authorization-window');
 
-	const submit = createElement(obj.submit_button);
-	const reject = rejectChange(obj, lock_window);
+	const submit = createElement(models.edit_post.submit_button);
+	const reject = rejectChange(models.edit_post, lock_window);
 	const post = document.createElement('form');
-	post.classList.add(obj.css);
-	const { fields } = obj;
+	post.classList.add(models.edit_post.css);
+	const { fields } = models.edit_post;
 	post.insertAdjacentElement('afterbegin', submit);
 	post.insertAdjacentElement('afterbegin', reject);
 	for (const field in fields) {
@@ -31,10 +34,10 @@ export const editPostForm = (obj, elem) => {
 		post.insertAdjacentElement('beforeend', input);
 	}
 	post.onchange = () => {
-		isValidInput(obj);
+		isValidInput(values);
 	};
 	submit.onclick = () => {
-		const value = createInputsValueObject(obj);
+		const value = createInputsValueObject(values);
 		value.userId = localStorage.getItem('current_user');
 		value.id = elem.id;
 		const post = drawPost(models.posts, {
@@ -56,7 +59,7 @@ export const editPostForm = (obj, elem) => {
 		top_bar.insertAdjacentElement('afterbegin', buttons);
 		post.insertAdjacentElement('afterbegin', top_bar);
 
-		const edit = editPost(models.posts, post,models.edit_post);
+		const edit = editPost(post, models.edit_post);
 		buttons.insertAdjacentElement('beforeend',edit);
 		const remove = 	deleteElem(models.posts, post);
 		buttons.insertAdjacentElement('beforeend',remove);
@@ -67,6 +70,67 @@ export const editPostForm = (obj, elem) => {
 		nickname_div.innerText = 'By : ' + user_nickname;
 
 		top_bar.insertAdjacentElement('beforeend',nickname_div);
+
+		const buttom_bar = document.createElement('div');
+		buttom_bar.id = 'buttom_bar'; 
+
+
+
+		const comments_button = document.createElement('div');
+		comments_button.innerText = 'comments';
+		comments_button.classList.add('comments-button');
+		comments_button.id = 'comments_button';
+
+		buttom_bar.insertAdjacentElement('beforeend',comments_button);
+
+		const comments = document.createElement('div');
+		comments.id = 'comments';
+		comments.classList.add('comments');
+
+		const openPost = (t) => {
+			if(!isOpenPost){
+  
+				if(t.target.closest('.post')){
+					post.classList.add('growing');
+					post.insertAdjacentElement('beforeend',buttom_bar);
+					isOpenPost=true;
+				}
+			}
+		};
+  
+		const closePost = (t) => {
+			if(!t.target.closest('.post')){
+				post.classList.remove('growing');
+				comments.remove();
+				buttom_bar.remove();
+				isOpenPost = false;
+			}
+		};
+  
+		const openComments = () => {
+			if(!isOpenComments){
+				comments.classList.add('growing');
+				buttom_bar.insertAdjacentElement('beforeend',comments);
+				appendComment(post);
+				isOpenComments = true;
+			}
+			else{
+				closeComments();
+			}
+		};
+		const closeComments = () => {
+			isOpenComments = false;
+			comments.replaceChildren('');
+			comments.remove();
+		};
+		comments_button.addEventListener('click',openComments);
+ 
+
+		post.addEventListener('click',openPost);
+		document.body.addEventListener('click',closePost);
+
+
+
 		elem.parentNode.replaceChild(post, elem);
 	};
 	Log_in_window.insertAdjacentElement('afterbegin', post);

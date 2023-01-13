@@ -10,6 +10,7 @@ import{comment_model } from './comments/commentModel';
 import { changeNickNameModel } from './changeUserInfo/changeNickNameModel';
 import {changePasswordModel }from './changeUserInfo/changePasswordModel';
 import { changeEmailModel } from './changeUserInfo/changeEmailModel';
+import { edit_comment_form } from './comments/editCommentForm/editCommentform';
 
 export const models = {
 	users: user_model,
@@ -19,6 +20,7 @@ export const models = {
 	checks,
 	edit_post: edit_post_form,
 	post_form,
+	edit_comment: edit_comment_form,
 	log_in: login_obj,
 	sign_up: sign_obj,
 	change_nickname: changeNickNameModel,

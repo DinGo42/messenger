@@ -1,7 +1,7 @@
-export const edit_post_form = {
-	css: 'edit-post',
+export const edit_comment_form = {
+	css: 'edit-comment',
 	error_style: 'invalid',
-	collection:'posts',
+	collection:'comments',
 	submit_button: {
 		elem_type: 'button',
 		id: 'save-edit',
@@ -19,31 +19,25 @@ export const edit_post_form = {
 	edit_button: {
 		elem_type: 'button',
 		id: 'edit-text',
-		classList: 'post-model',
+		classList: 'comment-model',
 		input_class: 'model',
 		text: 'Edit',
 		type: 'button',
 	},
+	delete_button: {
+		elem_type: 'button',
+		id: 'delete-comment',
+		classList: 'comment-model',
+		input_class: 'model',
+		text: 'X',
+		type: 'button',
+	},
 	fields: {
-		title: {
-			elem_type: 'input',
-			value: null,
-			id: 'title_post_form_edit_input',
-			classList: 'authorization-input',
-			type: 'text',
-			placeholder: 'title...',
-			validation: {
-				required: true,
-				type: 'string',
-				max_length: 50,
-				min_length: 5,
-			},
-			css: 'title-post',
-		},
 		text: {
 			elem_type: 'input',
 			value: null,
-			id: 'text_post_form_edit_input',
+			text:'asdad',
+			id: 'text_comment_form_edit_input',
 			classList: 'authorization-input',
 			type: 'text',
 			placeholder: 'text',
@@ -53,7 +47,7 @@ export const edit_post_form = {
 				max_length: 250,
 				min_length: 5,
 			},
-			css: 'text-post',
+			css: 'text-comment',
 		},
 	},
 };

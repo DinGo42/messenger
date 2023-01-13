@@ -8,7 +8,7 @@ import { createElement } from '../../constructors/elemConstrustor';
 import { createSignUpForm } from '../signUpForm/signUpForm';
 
 export const postForm = () => {
-	if(localStorage.getItem('current)user')=='null' || localStorage.getItem('current)user')== null){
+	if(localStorage.getItem('current_user')=='null' || localStorage.getItem('current_user')== null){
 		return createSignUpForm ();
 	}
 	const post_obj = models.post_form;

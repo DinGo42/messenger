@@ -1,12 +1,9 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-import { growAnimation } from '../animations/grow';
 import { deleteElem } from '../changeFunctions/delete/delete';
 import { postForm } from '../forms/postForm/postForm';
 import { models } from '../models/objectModel';
-import { editPost } from './editPost';
-import {postAnimation} from '../animations/postAnimation';
 import { appendComment } from '../comments/appendComments';
 import { find } from '../database/database';
+import { editPost } from '../changeFunctions/edit/editPost';
 
 
 let isOpenPost = false;  
@@ -47,13 +44,10 @@ const createPost = (obj_model, { title, text, id }, div) => {
 	nickname_div.innerText = 'By : ' + user_nickname;
 
 	if(userId == current_user ){
-		const edit = editPost(obj_model, post, models.edit_post);
+		const edit = editPost(post, models.edit_post);
 		buttons.insertAdjacentElement('beforeend',edit);
-	  // eslint-disable-next-line no-mixed-spaces-and-tabs
 		const remove = deleteElem(obj_model, post);
 		buttons.insertAdjacentElement('beforeend',remove);
-
-
 	}
 	top_bar.insertAdjacentElement('beforeend',nickname_div);
 
@@ -67,6 +61,7 @@ const createPost = (obj_model, { title, text, id }, div) => {
 	const comments_button = document.createElement('div');
 	comments_button.innerText = 'comments';
 	comments_button.classList.add('comments-button');
+	comments_button.id = 'comments_button';
 
 	buttom_bar.insertAdjacentElement('beforeend',comments_button);
 

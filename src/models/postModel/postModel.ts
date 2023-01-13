@@ -2,7 +2,7 @@ export const post_model = {
 	id: 3,
 	type: 'POST',
 	collection: 'posts',
-	submit_button: {
+	edit_button: {
 		elem_type: 'button',
 		id: 'edit-text',
 		classList: 'post-model',

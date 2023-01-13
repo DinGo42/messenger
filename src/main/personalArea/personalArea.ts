@@ -9,7 +9,7 @@ import {createSignUpForm} from '../../forms/signUpForm/signUpForm';
 
 export const personalArea = () =>{
 	const current_user =  localStorage.getItem('current_user');
-	if(current_user=='null'){
+	if(current_user=='null' || current_user== null){
 		return createSignUpForm ();
 	}
 	const user = find({id:current_user},'users');

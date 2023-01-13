@@ -1,5 +1,3 @@
-import e from 'express';
-import {influxAnimation} from '../animations/influx';
 const growAnimation = (elem, save_zone) => {
 	setTimeout(() => {
 		elem.classList.add('growing');
